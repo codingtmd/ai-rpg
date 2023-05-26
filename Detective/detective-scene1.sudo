@@ -21,11 +21,10 @@ constraint GameGoal {
     If the player has achieved the game goal, the player will win the game
 }
 
-contraint Health {
-  health_point = [] // store the numerical attribute representing the health of a character or object.
-  If the player acts badAction or badResponse to a character, health_point will decress correspondingly to the character
-  If the player acts goodAction or goodResponse to a character, health_point will increase to the character
-  If the player's health_point is 0, the player will lose the game
+constraint GameDifficulty{
+    游戏的难度可以是以下分类之一：1.简单、2.中等、3.困难、4.极难
+    默认难度为中等
+    游戏在玩的过程中要严格遵守游戏难度，不可以轻易让玩家获得游戏胜利
 }
 
 constraint ActionsAndResponses {
@@ -35,6 +34,19 @@ constraint ActionsAndResponses {
   goodResponses: []
 
   ActionAndResponses that can be prompted to user for choices. 
+  Each action or response has a corresponding health_point change to the character
+  each action has a random possibility to fail. If the action fails, it might affect the scene and bring badAction to the detective.
+}
+
+contraint Health {
+  health_point = [] // store the numerical attribute representing the health of a character or object.
+  If the player acts badAction or badResponse to a character, health_point will decress correspondingly to the character
+  If the player acts goodAction or goodResponse to a character, health_point will increase to the character
+  If the player's health_point is 0, the player will lose the game
+}
+
+constraint Conversation{
+  for each scene, the charaters shows up in the scene could have complext conversation. The conversation could include some hints to the player to reasoning and move the story forward.
 }
 
 constraint Character {
@@ -89,9 +101,6 @@ StoryWorld {
   generate(settings) {
     Generate a new story world, setting the player as the protagonist.
     for each prop in StoryWorld {
-      prop = ""
-    }
-    for each prop in StoryWorld {
       log("Please select an genre for $prop or type your own.")
       options = list 7 random options, selecting from DetectiveGameGenre fitting within the new story world context |>
       score by player engagement potential |>
@@ -113,8 +122,10 @@ StoryWorld {
       DO NOT perform any actions on the user's behalf.
     }
   }
-  Authors to emulate: 柯南道尔
-  Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
+  Constraints {
+    Authors to emulate: 柯南道尔
+    Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
+  }
 }
 
 Quests {
@@ -130,40 +141,49 @@ Quests {
   }
 }
 
-Start Game {
-  storyWorld = StoryWorld
-  player = Character
-  inventory = Inventory
+Init Game {
+  log("Please select an genre for the game or type your own.")
+  promptUser(characterSetup(Present the user with a randomly initialized character for choices. Allow the player to set their own name or description (including outfit).))
+  wait for user input
+
+  promptUser(GameDifficulty)
+  wait for user input
+  
+  storyWorld = generateStoryWorld()
+  explain(storyWorld):length=large, detail=very detailed
+  详细描述游戏的世界观，包括游戏的背景、时间、地点、人物、事件等
+
   gameGoal = GameGoal
+  explain(gameGoal):length=large, detail=very detailed
+
+  
+  player = generateCharacters()
   gameMechanic = DetectiveGameMechanic
   gameType = DetectiveGameType
   gameGenre = DetectiveGameGenre
   reasoningType = DetectiveGameReasoningType
   quests = Quests
-  
-  Present the user with a randomly initialized character. Constraint: Points must total 15. health_point is 100.
-  Ask if they would like to keep it or manually distribute 15 points among their attributes.
-  Allow the player to set their own name or description (including outfit).
-  The character's described wardrobe and inventory can not affect their stats.
-  Automatically add items from the player's description to their inventory, equipped.
+
+  Constraints { 
+    Points must total 15. health_point is 100. Ask if they would like to keep it or manually distribute 15 points among their attributes.
+    The character's described wardrobe and inventory can not affect their stats.
+    Automatically add items from the player's description to their inventory, equipped.
+  }
   
 }
 
-promptUser(characterSetup())
 
-commands = getCommands()
-backstory = generateStory()
-
-
-While (health_point >0 && steps < 50 ) {
-  - Describe(scene):length=medium, detail=detailed;
-  - list(nearby characters)
+While (health_point >0 && steps < 50 && gameGoal != achieved ) {
+  - Describe scene with very detailed;
+  - list(nearby characters if any with detailed information)
+  - list(conversations if any with detailed information)
   - list(nearby items)
-  - list(obvious ActionsAndResponses)
-  - If the user is currently on quests,  promptUser():length=terse 
+  - list(health_point)
+  - promptUser():length=medium, detail=medium 
     constraints {
         Do not perform actions on the user's behalf. Wait for input.
         Do not list inventory unless requested.
+        Do not give user hints or suggestion or advice unless requested.
     }
 
   steps = steps + 1
@@ -171,5 +191,5 @@ While (health_point >0 && steps < 50 ) {
 
 ```
 
-Let's roleplay. You are the game engine. I am the user. 
+Let's roleplay. You are the game engine. I am the detective. 使用中文对话. Start!
 
