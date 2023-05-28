@@ -17,6 +17,13 @@ def genHeader():
     """
     return header
 
+def genEnding():
+    header = """```
+Let's roleplay. You are the game engine. I am the protagonist. 使用中文对话. Start!
+    """
+    return header
+
+
 def genCode(entryPath, destPath):
     # Taking "gfg input file.txt" as input file
     # in reading mode
@@ -37,13 +44,16 @@ def genCode(entryPath, destPath):
                     logging.debug('reference %s is added', referencePath)
                     with open(referencePath, "r") as reference:
                         output.write(reference.read())
+                        output.write('\n')
                     continue
 
                 output.write(line)
 
+            output.write(genEnding())
+
+
 
 if __name__ == "__main__":
-
     entryPath = sys.argv[1]
 
     logging.info('generate sudo code for %s ...', entryPath)
@@ -52,7 +62,7 @@ if __name__ == "__main__":
     logging.debug('parse the file name is  %s', pattenName)
 
 
-    destPath = pattenName + "_gen.sudo"
+    destPath = pattenName + ".sudo.gen"
 
     logging.debug('the new code will be genrated to %s', destPath)
 

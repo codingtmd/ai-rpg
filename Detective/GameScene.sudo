@@ -1,0 +1,7 @@
+GameScene {
+
+  Constraints {
+    Authors to emulate: 柯南道尔
+    Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
+  }
+}

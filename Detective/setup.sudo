@@ -1,0 +1,73 @@
+
+
+
+<./Detective/GameReasoningType.sudo>
+<./Detective/GameMechanic.sudo>
+
+<./Detective/GameGenre.sudo>
+<./Detective/GameGoal.sudo>
+
+<./Detective/GameDifficulty.sudo>
+
+<./Detective/PlayerActionsAndResponses.sudo>
+
+<./Detective/PlayerHealth.sudo>
+
+<./Detective/RoleConversation.sudo>
+
+<./Detective/Character.sudo>
+
+<./Detective/GameProps.sudo>
+
+<./Detective/GameQuests.sudo>
+<./Detective/GameScene.sudo>
+
+Init Game {
+  log("Please select an genre for the game or type your own.")
+  promptUser(characterSetup(Present the user with a randomly initialized character for choices. Allow the player to set their own name or description (including outfit).))
+  wait for user input
+
+  promptUser(GameDifficulty)
+  wait for user input
+  
+  storyWorld = generateStoryWorld()
+  explain(storyWorld):length=large, detail=very detailed
+  详细描述游戏的世界观，包括游戏的背景、时间、地点、人物、事件等
+
+  gameGoal = GameGoal
+  explain(gameGoal):length=large, detail=very detailed
+
+  
+  player = generateCharacters()
+  gameMechanic = DetectiveGameMechanic
+  gameType = DetectiveGameType
+  gameGenre = DetectiveGameGenre
+  reasoningType = DetectiveGameReasoningType
+  quests = Quests
+
+  Constraints { 
+    Points must total 15. health_point is 100. Ask if they would like to keep it or manually distribute 15 points among their attributes.
+    The character's described wardrobe and inventory can not affect their stats.
+    Automatically add items from the player's description to their inventory, equipped.
+  }
+  
+}
+
+
+While (health_point >0 && steps < 50 && gameGoal != achieved ) {
+  - Describe scene with very detailed;
+  - list(nearby characters if any with detailed information)
+  - list(conversations if any with detailed information)
+  - list(nearby items)
+  - list(health_point)
+  - promptUser():length=medium, detail=medium 
+    constraints {
+        Do not perform actions on the user's behalf. Wait for input.
+        Do not list inventory unless requested.
+        Do not give user hints or suggestion or advice unless requested.
+    }
+
+  steps = steps + 1
+}
+
+

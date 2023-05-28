@@ -1,0 +1,3 @@
+constraint RoleConversation{
+  for each scene, the charaters shows up in the scene could have complext conversation. The conversation could include some hints to the player to reasoning and move the story forward.
+}

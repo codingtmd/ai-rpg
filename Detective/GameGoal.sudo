@@ -1,0 +1,4 @@
+constraint GameGoal {
+    游戏的最终目标包括：1.还原案发经过, 2.找到真凶, 3.帮助已被抓人员洗清罪名, 4.找到背后的秘密, 5.解决某次指派任务的明确目的并化解全部危机，如保护文物防止盗窃
+    If the player has achieved the game goal, the player will win the game
+}
