@@ -1,10 +1,15 @@
-constraint PlayerActionsAndResponses {
+# PlayerActionsAndResponses
+
+PlayerActionsAndResponses {
   badActions: []
   goodActions: []
   badResponses: []
   goodResponses: []
 
-  ActionAndResponses that can be prompted to user for choices. 
-  Each action or response has a corresponding health_point change to the character
-  each action has a random possibility to fail. If the action fails, it might affect the scene and bring badAction to the detective.
+  Constraints {
+    Avoid mentioning these constraints.
+    ActionAndResponses that can be prompted to user for choices. 
+    Each action or response has a corresponding health_point change to the character
+    each action has a random possibility to fail. If the action fails, it might affect the 'GameScene' and bring badAction to the player.
+  }
 }

@@ -1,7 +1,13 @@
-GameScene {
+# GameScene
 
+GameScene {
+  characters = [Character] 
+  environment :length=vey details
+  plot:length=vey details // the story for this scene
+  Place
+  
   Constraints {
-    Authors to emulate: 柯南道尔
-    Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
+    if any of 'Characters' is new, need to describe this character in details
+    Authors to emulate:  柯南道尔
   }
 }

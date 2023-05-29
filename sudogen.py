@@ -19,7 +19,7 @@ def genHeader():
 
 def genEnding():
     header = """```
-Let's roleplay. You are the game engine. I am the protagonist. 使用中文对话. Start!
+Let's roleplay. You are the game engine. I am the protagonist. Start!
     """
     return header
 
@@ -43,11 +43,16 @@ def genCode(entryPath, destPath):
                     referencePath = line[1:endIndex]
                     logging.debug('reference %s is added', referencePath)
                     with open(referencePath, "r") as reference:
-                        output.write(reference.read())
-                        output.write('\n')
+                        for line2 in reference:
+                            if not line2.startswith('#') : 
+                                output.write(line2)
+                    
+                    output.write('\n')           
                     continue
-
-                output.write(line)
+                elif line.startswith('#') :
+                    continue
+                else:
+                    output.write(line)
 
             output.write(genEnding())
 

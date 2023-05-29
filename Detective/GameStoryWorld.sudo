@@ -1,0 +1,21 @@
+# GameStoryWorld
+
+GameStoryWorld {
+  Genre
+  Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
+  Setting
+  Plot
+  Place 
+  Characters
+  World mechanics
+  History
+  Central conflict
+  
+  Constraints {
+    Authors to emulate:  柯南道尔
+  }
+
+  generate($character, $difficulty) {
+    Generate a new story world based on $character and $difficulty, and set the $character as the protagonist.
+  }
+}
