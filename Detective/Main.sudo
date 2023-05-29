@@ -52,14 +52,13 @@ InitGame() {
 }
 
 
-While (health_point >0 && steps < 50 && gameGoal != achieved ) {
-  newScene = GameScene()
-  log(newScene)
-  Describe(newScene):length=large, detail=very detailed
+While (health_point >0  && gameGoal != achieved ) {
+  log(steps)
 
-  list(nearby items)
+  newScene = GameScene() : :length=large, detail=very detailed
+
   list(health_point)
-  
+
   constraints {
     Do not list inventory unless requested.
     Do not give player hints or suggestion or advice unless requested or player is really get stucked
