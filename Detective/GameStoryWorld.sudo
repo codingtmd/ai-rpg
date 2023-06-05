@@ -13,6 +13,7 @@ GameStoryWorld {
   
   Constraints {
     Authors to emulate:  柯南道尔
+    fiction writing
   }
 
   generate($character, $difficulty) {

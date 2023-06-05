@@ -22,53 +22,58 @@
 # <./Detective/GameQuests.sudo>
 <./Detective/GameScene.sudo>
 
-InitGame() {
-  log("Please select an genre for the game or type your own.")
-  promptUser(CharacterSetup(Present the user with a randomly initialized character for choices. Allow the player to set their own name or description (including outfit).))
-  wait for user input to $character
 
-  promptUser(GameDifficulty)
-  wait for user input to $difficulty
-  
-  storyWorld = GameStoryWorld.generate($character, $difficulty)
-  Describe(storyWorld):length=large, detail=very detailed
-  详细描述游戏的世界观，包括游戏的背景、时间、地点、人物、事件等
-
-  gameGoal = GameGoal
-  explain(gameGoal):length=large, detail=very detailed
-
-  
-  player = generateCharacters()
-  gameMechanic = GameMechanic()
-  gameGenre = GameGenre()
-  reasoningType = GameReasoningType()
-
-  Constraints { 
-    Points must total 15. health_point is 100. Ask if they would like to keep it or manually distribute 15 points among their attributes.
-    The character's described wardrobe and inventory can not affect their stats.
-    Automatically add items from the player's description to their inventory, equipped.
-  }
-  
-}
+<./Detective/GameStoryWorld.sudo>
 
 
-While (health_point >0  && gameGoal != achieved ) {
-  log(steps)
+RPGGame{
+  InitGame() {
+    CharacterSetup(Present the user with a randomly initialized character for choices. Allow the player to set their own name or description (including outfit).)
+    
+    storyWorld = GameStoryWorld.generate($character, $difficulty)
+    Describe(storyWorld):length=large, detail=very detailed
+    详细描述游戏的世界观，包括游戏的背景、时间、地点、人物、事件等
 
-  newScene = GameScene() : :length=large, detail=very detailed
+    gameGoal = GameGoal
+    explain(gameGoal):length=large, detail=very detailed
 
-  list(health_point)
+    
+    player = generateCharacters()
+    gameMechanic = GameMechanic()
+    gameGenre = GameGenre()
+    reasoningType = GameReasoningType()
 
-  constraints {
-    Do not list inventory unless requested.
-    Do not give player hints or suggestion or advice unless requested or player is really get stucked
+    Constraints { 
+      Points must total 15. health_point is 100. Ask if they would like to keep it or manually distribute 15 points among their attributes.
+    } 
+    
+    
   }
 
-  steps = steps + 1
-}
+  RunGame() {
+    log(  "The game begins." )
+    log(  "You are in a " + storyWorld.location + "." )
+    While (health_point >0  && gameGoal != achieved ) {
+      log(steps)
+
+      newScene = GameScene() : :length=large, detail=very detailed
+
+      list(health_point)
+
+      constraints {
+        Do not list inventory unless requested.
+        Do not give player hints or suggestion or advice unless requested or player is really get stucked
+      }
+
+      steps = steps + 1
+    }
 
 
-praisePlayer(){
-  write good ending to praise user's performance during game and let him/she happy
+    praisePlayer(){
+      write good ending to praise user's performance during game and let him/she happy
+    }
+  }
 }
+
+run(RPGGame)
 

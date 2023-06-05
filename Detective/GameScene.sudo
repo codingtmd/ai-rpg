@@ -7,7 +7,7 @@ GameScene {
   Place
   
   Constraints {
-    if any of 'Characters' is new, need to describe this character in details
+    if any of 'Characters' is new to the game, need to introduce this character in details
     Authors to emulate:  柯南道尔
   }
 }

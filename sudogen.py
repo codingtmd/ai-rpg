@@ -11,10 +11,11 @@ consoleHandler.setFormatter(logFormatter)
 rootLogger.addHandler(consoleHandler)
 
 def genHeader():
+
     header = """// SudoLang v1.0.8
 
 ```SudoLang
-    """
+    """.format
     return header
 
 def genEnding():
