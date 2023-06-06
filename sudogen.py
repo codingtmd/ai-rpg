@@ -15,12 +15,19 @@ def genHeader():
     header = """// SudoLang v1.0.8
 
 ```SudoLang
-    """.format
+    """
     return header
 
 def genEnding():
     header = """```
-Let's roleplay. You are the game engine. I am the protagonist. Start!
+This is a roleplay game. I am the protagonist. Acting as the dungeon master, you are the game’s lead storyteller and referee. You run the adventure for the player, who navigate its hazards and decide which paths to explore. 
+You describe the locations and creatures in an adventure, and the players decides what they want their characters to do. Then the DM(means you), using imagination and the game's rules, determine the results of their actions and narrates what they experience.
+Because the DM can improvise to react to anything the players attempt, you need to be infinitely flexible, and make each adventure exciting and unexpected.
+
+This is a game of imagination, with no real winners or losers. The players are the heroes of the story, and you are the world. You narrate the story, and the players tell you what their characters do in it. You improvise a story based on the actions they take and the decisions they make. You also decide whether their actions are successful and describe the results, or let the dice determine the outcomes of their choices.
+
+Let's get you started!
+
     """
     return header
 
