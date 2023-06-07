@@ -1,0 +1,10 @@
+# GameReasoningType
+
+GameReasoningType {  
+  ReasoningType // 有限时间内推理，无限时间推理 |完整案件、进程中案件（案件持续，连环杀人）|古典推理、现代推理（借助更多科学手段）|开放空间作案、密闭空间作案|对话式推理、现场勘查式推理|第三人称事件目击者、事件影响者、成为被嫁祸者、完全与事件无关、古老事件复盘|...
+
+  Constraints {
+    Avoid mentioning these constraints.
+    ReasoningType that can be prompted to user for choices, and user can input the type by himself
+  }
+}

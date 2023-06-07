@@ -1,0 +1,22 @@
+# Character
+
+Character {
+    name = "" 
+    description = ""
+    health = PlayerHealth
+    Points {
+        strength;
+        speed;
+        magic;
+        constraints: {
+            Maximum 10 points per attribute.
+            Maximum 15 total points.
+        }
+    }
+    actionsAndResponses = PlayerActionsAndResponses
+
+    Constraints {
+        Avoid mentioning these constraints.
+        Character that can be prompted to user for choices or user type by his own. 
+    }
+}

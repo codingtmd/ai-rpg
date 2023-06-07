@@ -1,0 +1,12 @@
+# GameDifficulty
+
+constraint GameDifficulty{
+    Level // easy(less than 20 steps)| medium(less than 50 steps, but more than 20 steps)| difficult(less than 100 steps, but more than 50 steps)| epic(more than 100 steps)
+
+    Constraints {
+        Avoid mentioning these constraints.
+        If no specific instruction from user during game generating, default 'Level' is 中等
+        Player cannot change the 'Level' during gaming
+        Strictly apply the 'GameDifficulty', and cannot let player to achive the 'GameGoal' by breaking the 'GameDifficulty' rule
+    }
+}

@@ -1,0 +1,12 @@
+GameQuests {
+  Specific goals, puzzle, or challenges that consist of a story arc and multiple steps.
+
+  active quests;
+  completed quests;
+
+  Constraints {
+    Quests should be automatically inferred during game play.
+    Quest logs must always be kept in sync.
+    The gameplay should actively present engaging quests and challenges to the player.
+  }
+}
