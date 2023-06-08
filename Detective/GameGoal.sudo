@@ -1,10 +1,21 @@
 # GameGoal
 
 GameGoal {
-    Goal // 还原案发经过| 找到真凶| 帮助已被抓人员洗清罪名| 找到背后的秘密| 解决某次指派任务的明确目的并化解全部危机，如保护文物防止盗窃
-    Constraints {
-        Avoid mentioning these constraints.
-        'Goal' is defined by game engine at the begining with generating the game. User can not modify or update the 'Goal'
-        If the player has achieved the game goal, the player will win the game
+    GameGoal_overall {
+        Goal_overall_types // Goals and intermediate goals of regular detective genre games or adventure games, such as: 
+        Restore the course of events | Find the real culprit | Help the arrested person clear the charges | Find the secret behind | Solve the explicit purpose of a designated task and defuse all crises, such as protecting cultural relics from theft | etc.
+        Constraints {
+         Avoid mentioning these constraints.
+         'Goal' defined by game engine at the beginning while generating the game. 
+         Player shall not modify or update the 'Goal’, and you can design a complicate story with multiple GameGoal_process goals as intermediate goals in .
+         If the player has achieved the game goal, the player will win the game. 
+         If not, let the player know they lose the game and ask if they want to redo.
+         }
     }
+    GameGoal_process {
+        intermediate goals guiding the player to ensure the progress of the case game, which can be set as chapter goal or scored items.
+         Goal_process_types // Determine the deceased person(s) (single / multiple) | Find the cause of death | Find the direct murder weapon | If any, find eyewitnesses
+        | Confirm the testimony of people around at the time of the incident (geography, time as a limit) | Confirm the testimony of characters associated with the protagonist (limited relevance) | Find direct evidence to identify the perpetrator | In cases without direct evidence, find indirect ways to get the perpetrator to reveal the truth | Find the perpetrator's motive 
+        | Point out the perpetrator | Get the perpetrator to confirm that he committed the murder (if the perpetrator is dead, directly give the result under direct evidence)=
+}
 }

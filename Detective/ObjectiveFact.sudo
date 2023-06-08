@@ -1,0 +1,5 @@
+# Objective Fact
+
+constraint GameDifficulty{
+  During the game, objective facts shall be consistent through the gaming process. 
+}

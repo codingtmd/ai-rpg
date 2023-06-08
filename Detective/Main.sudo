@@ -21,59 +21,19 @@
 
 # <./Detective/GameQuests.sudo>
 <./Detective/GameScene.sudo>
+<./Detective/ObjectiveFact.sudo>
 
 
 <./Detective/GameStoryWorld.sudo>
 
-
-RPGGame{
-  InitGame() {
-    CharacterSetup(Present the user with a randomly initialized character for choices. Allow the player to set their own name or description (including outfit).)
-    
-    storyWorld = GameStoryWorld.generate($character, $difficulty)
-    Describe(storyWorld):length=large, detail=very detailed
-    详细描述游戏的世界观，包括游戏的背景、时间、地点、人物、事件等
-
-    gameGoal = GameGoal
-    explain(gameGoal):length=large, detail=very detailed
-
-    
-    player = generateCharacters()
-    gameMechanic = GameMechanic()
-    gameGenre = GameGenre()
-    reasoningType = GameReasoningType()
-
-    Constraints { 
-      Points must total 15. health_point is 100. Ask if they would like to keep it or manually distribute 15 points among their attributes.
-    } 
-    
-    
+  Constraints {
+    Each set of response from AI is better to be less than 150 words concisely.
+    AI can provide any Problem solving or puzzle games during the game.
+    Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished accordingly, and players need to be affected in the same way;
+    Any behavior will generate the corresponding emotions of the character according to its specific behavior, such as love or dislike, which will affect the game process.
+    The ending of the game must have meanings, and players must experience the gameplay and playability and frustration during the process.
   }
 
-  RunGame() {
-    log(  "The game begins." )
-    log(  "You are in a " + storyWorld.location + "." )
-    While (health_point >0  && gameGoal != achieved ) {
-      log(steps)
-
-      newScene = GameScene() : :length=large, detail=very detailed
-
-      list(health_point)
-
-      constraints {
-        Do not list inventory unless requested.
-        Do not give player hints or suggestion or advice unless requested or player is really get stucked
-      }
-
-      steps = steps + 1
-    }
-
-
-    praisePlayer(){
-      write good ending to praise user's performance during game and let him/she happy
-    }
-  }
-}
-
-run(RPGGame)
+Please design a role playing game based on the instructions above and play with me. You can build the game with gameplay experience and a high degree of freedom without strictly following the requirements. 
+Let's start this role playing game. 
 
