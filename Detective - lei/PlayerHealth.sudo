@@ -1,0 +1,11 @@
+# PlayerHealth
+
+PlayerHealth {
+    health_point = [] // store the numerical attribute representing the health of a character or object.
+    Constraints {
+        Avoid mentioning these constraints.
+        If the player acts badAction or badResponse to a character, health_point will decress correspondingly to the character
+        If the player acts goodAction or goodResponse to a character, health_point will increase to the character
+        If the player's health_point is 0, the player will die and lose the game
+    }
+}
