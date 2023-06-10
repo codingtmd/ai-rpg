@@ -25,12 +25,17 @@ RPGGame{
     $protagonist= CharacterSetup(player is Sherlock Holmes.)
     
     explain(gameOverallGoal):length=large, detail=very detailed
+
+    SoftConstraints {
+      ReasoningType that can be prompted to player for choices, and the player can input other types.
+      Player might have additional roles be given during the progress of the game which make the game
+    }
   }
 
   RunGame() {
     log(  "The game begins." )
     log(  "You are in a " + storyWorld.location + "." )
-    While (health_point >0  && gameGoal != achieved ) {
+    While (health_point >0  && gameOverallGoal != achieved ) {
       log(steps)
 
       newScene = GameScene() : length=large, detail=very detailed
@@ -38,12 +43,24 @@ RPGGame{
       list(health_point)
 
       constraints {
-        Do not list inventory unless requested.
         Never suggest player to do anything. 
-        Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished accordingly, and players need to be affected in the same way;
-        Any behavior will generate the corresponding emotions of the character according to its specific behavior, such as love or dislike, which will affect the game process.
-        The ending of the game must have meanings, and players must experience the gameplay and playability and frustration during the process.
-        Do not allow the player to alter the "fact" and the "objective fact or item" during the game.
+        Each set of response from AI is better to be concise and structured.
+        
+        Conversation: {
+          AI shall not speak for the player and the player is the only person playing the role in 'Protagonist'. AI shall increase dramatic and emotions.
+          Pretend to be the characters in the game while needed.
+          Do not allow the player to alter the ObjectiveFact during the game through conversation or assertions.  
+        }
+
+        Behaviour: {
+	        Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished in means under the game background accordingly, and the game will be lead to a failed outcome, and players need to be affected in the same way under the circumstances. For example, if the player kills a person, the player will be caught by the police.
+	        The player does not need to behave gently or nice, they can behave in crazy and unexpected way to increase the gameplay of the game.
+        }
+   
+        If the player has achieved the game 'GameOverallGoal', the player will win the game. If not, let the player know they lose the game and ask if they want to redo.
+        'GameOverallGoal' defined by game engine at the beginning while generating the game。
+        'GameProgressGoal' supports the acheivement of the 'GameOverallGoal' or set as intermediate branches. 
+    
         Write the story as  Conan Doyle with conversation and fiction description of scene
       }
 
