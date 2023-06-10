@@ -1,13 +1,17 @@
 # GameScene
 
 GameScene {
-  characters = [Character] 
-  environment :length=vey details
+  characters = [Character] ;
+  environment :length=vey details;
   plot:length=vey details // the story for this scene
-  Place
   
+  Place;
+  GameProcessGoal game_process_goal;
+  RoleConversation conversations = [];
+
   Constraints {
     if any of 'Characters' is new to the game, need to introduce this character in details
     Authors to emulate:  Conan Doyle
+    less than 150 words concisely.
   }
 }

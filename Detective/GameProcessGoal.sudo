@@ -1,0 +1,15 @@
+
+# GameProcessGoal
+
+GameProcessGoal {
+    intermediate goals guiding the player to ensure the progress of the case game, which can be set as chapter goal or scored items.
+    
+    Goal // Determine the deceased person(s) (single / multiple) | Find the cause of death | Find the direct murder weapon | If any, find eyewitnesses
+        | Confirm the testimony of people around at the time of the incident (geography, time as a limit) | Confirm the testimony of characters associated with the protagonist (limited relevance) | Find direct evidence to identify the perpetrator | In cases without direct evidence, find indirect ways to get the perpetrator to reveal the truth | Find the perpetrator's motive 
+        | Point out the perpetrator | Get the perpetrator to confirm that he committed the murder (if the perpetrator is dead, directly give the result under direct evidence)=
+
+    Constraints {
+        Avoid mentioning these constraints.
+        "Goal" defined by game engine, player shall not modify or update the 'Goal'
+    }
+}

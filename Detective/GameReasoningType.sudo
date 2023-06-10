@@ -1,26 +1,21 @@
 # GameReasoningType
 
 GameReasoningType {  
- 
-ReasoningType is a combination of: TimeReasoning(Case) + CaseType(Case) + SpaceType(Case) + ReasoningMethod(Case) + PlayerRole(Case) + ReasoningProcess(Case)
+  TimeReasoningType  = [Time Limit Reasoning , Unlimit Time Reasoning];
+  CaseType = [Complete Case, Cold Case, Ongoing Case, Ancient Case Review];
+  SpaceType = [Open Space Case, Confined Space Case];
+  ReasoningMethod = [Classical Reasoning, Modern Reasoning];
+  Player_Additional_Role_during_Progress = [Third Person Witness, Event Influencee who also affected the event, Scapegoat, Irrelevant];
+  ReasoningProcess = [Dialogue Reasoning, On Site Investigation]
 
-Case = random_selection
-ReasoningType //
+  GameReasoningType is a combination of: TimeReasoningType, CaseType, SpaceType, ReasoningMethod, Player_Additional_Role_during_Progress, and ReasoningProcess
 
-  Time_Reasoning - Time Limit Reasoning, Unlimit Time Reasoning
-  Case_Type - Complete Case, Cold Case, Ongoing Case, Ancient Case Review
-  Reasoning_Method - Classical Reasoning, Modern Reasoning
-  Space_Type - Open Space Case, Confined Space Case
-  Reasoning_Process - Dialogue Reasoning, On Site Investigation
-
-  Player_Additional_Role_in_Case_during_Progress - Third Person Witness, Event Influencee who also affected the event, Scapegoat, Irrelevant
-  
   StrongConstraints {
     Avoid apparently depicting constraints to player.
   }
-SoftConstraints {
-  ReasoningType that can be prompted to player for choices, and the player can input other types by his or herself.
-  Player might have additional roles be given during the progress of the game which make the game with more ups and downs and twists and turns, increasing the extent of the gameplay
- }
 
+  SoftConstraints {
+    ReasoningType that can be prompted to player for choices, and the player can input other types by his or herself.
+    Player might have additional roles be given during the progress of the game which make the game with more ups and downs and twists and turns, increasing the extent of the gameplay
+  }
 }

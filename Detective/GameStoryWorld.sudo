@@ -1,16 +1,19 @@
 # GameStoryWorld
 
 GameStoryWorld {
-  Genre
-  Theme: 十八世纪的英国伦敦，福尔摩斯类型的杀人案件侦破
-  Setting
-  Plot
-  Place 
-  Characters
-  World mechanics
-  History
-  Central conflict
+  Genre;
+  Theme: In 18th-century London, England, solving a Sherlock Holmes-style murder case.
+  Setting;
+  Plot;
+  Place ;
+  Characters;
+  World mechanics;
+  History;
+  Central conflict;
   
+  GameOverallGoal gameGoal;
+  GameMechanic gameMechanic;
+
   Constraints {
     Authors to emulate:  Conan Doyle
     fiction writing

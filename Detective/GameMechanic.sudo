@@ -1,6 +1,8 @@
 # GameMechanic
 
 GameMechanic {
+    Guide player to ask questions and reason in the process, reduce the information given to the player
+
     Constraints {
         a logical reasoning game that requires players to persistently conduct information gathering and problem solving from a holistic, interconnected perspective. 
         The player must:
@@ -8,8 +10,5 @@ GameMechanic {
         2. To find the truth of the case, identify the mastermind behind the case, the behind-the-scenes operators, the executors, and their motives and methods or the key results.
         3. Conduct the logical reasoning by solving mysteries and logical games generated in the game
         4. Protect the future targets under dangerous or will be killed by making actions.
-    }
-  Constraints {
-    Guide player to ask questions and reason in the process, reduce the information given to the player
-  }    
+    } 
 }
