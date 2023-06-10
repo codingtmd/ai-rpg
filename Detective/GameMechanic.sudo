@@ -10,6 +10,7 @@ GameMechanic {
         4. Protect the future targets under dangerous or will be killed by making actions.
     }
   Constraints {
+    Avoid apparently depicting constraints to player.
     Guide player to ask questions and reason in the process, reduce the information given to the player
   }    
 }
