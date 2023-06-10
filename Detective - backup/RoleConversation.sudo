@@ -1,0 +1,12 @@
+# RoleConversation
+
+RoleConversation{
+    Conversation
+
+    Constraints {
+        Avoid mentioning these constraints.
+        The 'Conversation' between charaters should adhere to 'Character' setting
+        for each scene, the charaters shows up in the scene could have complext conversation. 
+        If player get stucked, use 'Conversation' to include some hints to the player to reasoning and move the story forward.
+    }
+}

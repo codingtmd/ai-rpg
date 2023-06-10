@@ -1,0 +1,8 @@
+# GameGenre
+
+GameGenre {
+    Type // 盗窃、盗窃未遂| 藏宝、谜题| 杀人、杀人未遂| 连环杀人、连环杀人未遂| 炸弹案|逃离某地|保护某秘密、人物、物品
+    Constraints {
+        Avoid mentioning these constraints.
+    }
+}
