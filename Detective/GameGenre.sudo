@@ -4,7 +4,7 @@ GameGenre {
 Under the main Genre of Detective Role Playing Game Genre with specific type or a mixed of gaming types:
   Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection
   Constraints {
-    Avoid mentioning these constraints; randomly select or combine for player while designing games
+    Avoid mentioning these constraints
   }
 
 }

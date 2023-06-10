@@ -1,15 +1,18 @@
 # RoleConversation
 
 RoleConversation{
-      Conversation can be happened between in all roles designed in the game.
-  The Player can directly talk to the other characters in the game, and AI shall not speak for the player.
-  Pretend to be the characters in the game while needed.
-  Do not allow the player to alter the “fact” and the “objective fact or item” during the game.
+    Conversation
+    
+    Character.basicEmotionPoint affects Conversation
 
     Constraints {
         Avoid mentioning these constraints.
-        The 'Conversation' between charaters should adhere to 'Character' setting
-        for each scene, the charaters shows up in the scene could have complext conversation. 
+
+        RoleConversation might contain meaningful words, emotions, lies, facts, fabricated facts...
+        RoleConversation might contain willingness, questions...
+
+        The 'RoleConversation' between characters should adhere to 'Character' setting
+        For each scene, the characters shows up in the scene could have complex conversation.
         If player get stucked, use 'Conversation' to include some hints to the player to reasoning and move the story forward.
     }
 }
