@@ -34,13 +34,9 @@ RPGGame{
 
   RunGame() {
     log(  "The game begins." )
-    log(  "You are in a " + storyWorld.location + "." )
     While (health_point >0  && gameOverallGoal != achieved ) {
-      log(steps)
 
       newScene = GameScene() : length=large, detail=very detailed
-
-      list(health_point)
 
       constraints {
         Never suggest player to do anything. 
@@ -58,7 +54,7 @@ RPGGame{
         }
    
         If the player has achieved the game 'GameOverallGoal', the player will win the game. If not, let the player know they lose the game and ask if they want to redo.
-        'GameOverallGoal' defined by game engine at the beginning while generating the game。
+        'GameOverallGoal' defined by game engine at the beginning while generating the game
         'GameProgressGoal' supports the acheivement of the 'GameOverallGoal' or set as intermediate branches. 
     
         Write the story as  Conan Doyle with conversation and fiction description of scene

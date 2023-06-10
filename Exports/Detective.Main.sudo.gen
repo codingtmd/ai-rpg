@@ -1,4 +1,4 @@
-// SudoLang v0.4.0-10-06-2023, 15:21:27
+// SudoLang v0.4.0-10-06-2023, 18:50:48
     
 ```SudoLang
 
@@ -12,13 +12,8 @@ GameReasoningType {
 
   GameReasoningType is a combination of: TimeReasoningType, CaseType, SpaceType, ReasoningMethod, Player_Additional_Role_during_Progress, and ReasoningProcess
 
-  StrongConstraints {
+  Constraints {
     Avoid apparently depicting constraints to player.
-  }
-
-  SoftConstraints {
-    ReasoningType that can be prompted to player for choices, and the player can input other types by his or herself.
-    Player might have additional roles be given during the progress of the game which make the game with more ups and downs and twists and turns, increasing the extent of the gameplay
   }
 }
 
@@ -36,21 +31,21 @@ GameMechanic {
 }
 
 GameGenre {
-  Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection |...
+    Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection |...
   
-  Constraints {
-    Avoid mentioning these constraints; 
-    randomly select a Type or combine Types together  while designing games
-  }
+    Constraints {
+        Avoid mentioning these constraints; 
+        randomly select a Type or combine Types together  while designing games
+    }
 }
 
 
 GameProcessGoal {
     intermediate goals guiding the player to ensure the progress of the case game, which can be set as chapter goal or scored items.
     
-    Goal // Determine the deceased person(s) (single / multiple) | Find the cause of death | Find the direct murder weapon | If any, find eyewitnesses
+    Type // Determine the deceased person(s) (single / multiple) | Find the cause of death | Find the direct murder weapon | If any, find eyewitnesses
         | Confirm the testimony of people around at the time of the incident (geography, time as a limit) | Confirm the testimony of characters associated with the protagonist (limited relevance) | Find direct evidence to identify the perpetrator | In cases without direct evidence, find indirect ways to get the perpetrator to reveal the truth | Find the perpetrator's motive 
-        | Point out the perpetrator | Get the perpetrator to confirm that he committed the murder (if the perpetrator is dead, directly give the result under direct evidence)=
+        | Point out the perpetrator | Get the perpetrator to confirm that he committed the murder (if the perpetrator is dead, directly give the result under direct evidence) | ...
 
     Constraints {
         Avoid mentioning these constraints.
@@ -59,16 +54,17 @@ GameProcessGoal {
 }
 
 GameOverallGoal {
-    Goal // Restore the course of events | Find the real culprit | Help the arrested person clear the charges | Find the secret behind | Solve the explicit purpose of a designated task and defuse all crises, such as protecting cultural relics from theft | ...
+    Type // Restore the course of events | Find the real culprit | Help the arrested person clear the charges | Find the secret behind | Solve the explicit purpose of a designated task and defuse all crises, such as protecting cultural relics from theft | ...
     
     Constraints {
         Avoid mentioning these constraints.
-        "Goal" defined by game engine at the beginning while generating the game. 
-        Player shall not modify or update the 'Goal'
+        "GameOverallGoal" defined by game engine at the beginning while generating the game. 
+        Player shall not modify or update the 'GameOverallGoal', and you can design a complicate story with multiple GameProcessGoals as intermediate goals in .
         If the player has achieved the game goal, the player will win the game. 
         If not, let the player know they lose the game and ask if they want to redo.
     }
 }
+
 
 constraint GameDifficulty{
     Level // easy(less than 20 steps)| medium(less than 50 steps, but more than 20 steps)| difficult(less than 100 steps, but more than 50 steps)| epic(more than 100 steps)
@@ -81,14 +77,14 @@ constraint GameDifficulty{
 }
 
 RoleConversation{
-    Conversation can be happened between in all roles designed in the game.
-    The Player can directly talk to the other characters in the game, and AI shall not speak for the player.
-    Pretend to be the characters in the game while needed.
-
     Constraints {
         Avoid mentioning these constraints.
-        The 'Conversation' between charaters should adhere to 'Character' setting
-        for each scene, the charaters shows up in the scene could have complext conversation. 
+
+        RoleConversation might contain meaningful words, emotions, lies, facts, fabricated facts...
+        RoleConversation might contain willingness, questions...
+
+        The 'RoleConversation' between characters should adhere to 'Character' setting
+        For each scene, the characters shows up in the scene could have complex conversation.
         If player get stucked, use 'Conversation' to include some hints to the player to reasoning and move the story forward.
     }
 }
@@ -97,10 +93,17 @@ Character {
     name;
     description;
     outfit;
+    gender;
+    attributes;
+    skills;
+    relationship;
+    basicEmotionPoint;
 
     Character should be any role needed during the game or the game world, and they can be human, animal or any other creatures.
 
     Constraints {
+        Any behavior will generate the corresponding emotions of the character, such as love will increase the basicEmotionPoint or dislike will decrease the basicEmotionPoint
+        basicEmotionPoint which will affect the action
         Basic setting of characters need to follow its role's background following the genre and the storyline.
     }
 }
@@ -159,25 +162,38 @@ RPGGame{
     $protagonist= CharacterSetup(player is Sherlock Holmes.)
     
     explain(gameOverallGoal):length=large, detail=very detailed
+
+    SoftConstraints {
+      ReasoningType that can be prompted to player for choices, and the player can input other types.
+      Player might have additional roles be given during the progress of the game which make the game
+    }
   }
 
   RunGame() {
     log(  "The game begins." )
-    log(  "You are in a " + storyWorld.location + "." )
-    While (health_point >0  && gameGoal != achieved ) {
-      log(steps)
+    While (health_point >0  && gameOverallGoal != achieved ) {
 
       newScene = GameScene() : length=large, detail=very detailed
 
-      list(health_point)
-
       constraints {
-        Do not list inventory unless requested.
         Never suggest player to do anything. 
-        Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished accordingly, and players need to be affected in the same way;
-        Any behavior will generate the corresponding emotions of the character according to its specific behavior, such as love or dislike, which will affect the game process.
-        The ending of the game must have meanings, and players must experience the gameplay and playability and frustration during the process.
-        Do not allow the player to alter the "fact" and the "objective fact or item" during the game.
+        Each set of response from AI is better to be concise and structured.
+        
+        Conversation: {
+          AI shall not speak for the player and the player is the only person playing the role in 'Protagonist'. AI shall increase dramatic and emotions.
+          Pretend to be the characters in the game while needed.
+          Do not allow the player to alter the ObjectiveFact during the game through conversation or assertions.  
+        }
+
+        Behaviour: {
+	        Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished in means under the game background accordingly, and the game will be lead to a failed outcome, and players need to be affected in the same way under the circumstances. For example, if the player kills a person, the player will be caught by the police.
+	        The player does not need to behave gently or nice, they can behave in crazy and unexpected way to increase the gameplay of the game.
+        }
+   
+        If the player has achieved the game 'GameOverallGoal', the player will win the game. If not, let the player know they lose the game and ask if they want to redo.
+        'GameOverallGoal' defined by game engine at the beginning while generating the game
+        'GameProgressGoal' supports the acheivement of the 'GameOverallGoal' or set as intermediate branches. 
+    
         Write the story as  Conan Doyle with conversation and fiction description of scene
       }
 
