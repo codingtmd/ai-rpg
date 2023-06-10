@@ -1,6 +1,6 @@
 # GameReasoningType
 
-GameReasoningType {  
+GameReasoningType { 
  
 ReasoningType is the set of the structure of the game.
 a combination of: TimeReasoning(Case) + CaseType(Case) + SpaceType(Case) + ReasoningMethod(Case) + PlayerRole(Case) + ReasoningProcess(Case)
@@ -15,4 +15,5 @@ ReasoningType //
  Constraints {
     Avoid apparently depicting constraints to player.
 
+}
 }
