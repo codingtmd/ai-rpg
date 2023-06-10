@@ -1,10 +1,10 @@
 # GameGenre
 
 GameGenre {
-  Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection |...
+    Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection |...
   
-  Constraints {
-    Avoid mentioning these constraints; 
-    randomly select a Type or combine Types together  while designing games
-  }
+    Constraints {
+        Avoid mentioning these constraints; 
+        randomly select a Type or combine Types together  while designing games
+    }
 }

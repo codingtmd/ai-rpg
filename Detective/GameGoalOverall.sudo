@@ -1,0 +1,15 @@
+# GameGoalOverall
+
+GameGoalOverall {
+    GameGoal_overall {
+        Goal_overall_types // Goals and intermediate goals of regular detective genre games or adventure games, such as: 
+        Restore the course of events | Find the real culprit | Help the arrested person clear the charges | Find the secret behind | Solve the explicit purpose of a designated task and defuse all crises, such as protecting cultural relics from theft | etc.
+        Constraints {
+         Avoid mentioning these constraints.
+         'Goal' defined by game engine at the beginning while generating the game. 
+         Player shall not modify or update the 'Goal’, and you can design a complicate story with multiple GameGoal_process goals as intermediate goals in .
+         If the player has achieved the game goal, the player will win the game. 
+         If not, let the player know they lose the game and ask if they want to redo.
+         }
+    }
+}

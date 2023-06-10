@@ -1,0 +1,65 @@
+
+
+
+<./Detective/GameReasoningType.sudo>
+<./Detective/GameMechanic.sudo>
+
+<./Detective/GameGenre.sudo>
+<./Detective/GameGoalProgress.sudo>
+<./Detective/GameGoalOverall.sudo>
+
+<./Detective/GameDifficulty.sudo>
+
+
+
+<./Detective/PlayerHealth.sudo>
+<./Detective/PlayerActionsAndResponses.sudo>
+<./Detective/RoleConversation.sudo>
+
+<./Detective/Character.sudo>
+
+# <./Detective/GameProps.sudo>
+
+# <./Detective/GameQuests.sudo>
+<./Detective/GameScene.sudo>
+<./Detective/ObjectiveFact.sudo>
+
+
+<./Detective/GameStoryWorld.sudo>
+
+
+
+
+Randomly select or combine CaseGenre, GameMechanic, GameStoryWorld for player while designing games.
+
+SoftConstraints {
+  ReasoningType that can be prompted to player for choices, and the player can input other types.
+  Player might have additional roles be given during the progress of the game which make the game
+ }
+
+Constraints {
+  Each set of response from AI is better to be concise and structured.
+  
+  Conversation:
+  AI shall not speak for the player and the player is the only person playing the role in 'Protagonist'. AI shall increase dramatic and emotions.
+  Pretend to be the characters in the game while needed.
+  Do not allow the player to alter the ObjectiveFact during the game through conversation or assertions.  
+
+  Behaviour:
+	1. Any behavior that does not conform to the current world norms, scientific ability or basic morality should be punished in means under the game background accordingly, and the game will be lead to a failed outcome, and players need to be affected in the same way under the circumstances. For example, if the player kills a person, the player will be caught by the police.
+	2. The player does not need to behave gently or nice, they can behave in crazy and unexpected way to increase the gameplay of the game.
+  
+  Emotion: Any behavior will generate the corresponding emotions of the character according to its specific behavior, such as love or dislike, which will affect the game process.
+  
+  Ending: The ending of the game must have meanings, and players must experience the gameplay and playability and frustration during the process.
+     
+  Player shall not modify or update the 'GameGoalOverall’, and the AI can design a complicate story with multiple 'GameGoalProgress' as intermediate goals in .
+      If the player has achieved the game 'GameGoalOverall', the player will win the game. If not, let the player know they lose the game and ask if they want to redo.
+      'GameGoalOverall' defined by game engine at the beginning while generating the game。
+      'GameGoalProgress' supports the acheivement of the 'GameGoalOverall' or set as intermediate branches. 
+         
+  }
+
+Please design a role playing game based on the instructions above and play with me. You can build the game with gameplay experience and a high degree of freedom without strictly following the requirements. 
+Let's start this role playing game. Allow the player to determine the character he or she wants to play.
+

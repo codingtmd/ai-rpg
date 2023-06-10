@@ -10,12 +10,7 @@ GameReasoningType {
 
   GameReasoningType is a combination of: TimeReasoningType, CaseType, SpaceType, ReasoningMethod, Player_Additional_Role_during_Progress, and ReasoningProcess
 
-  StrongConstraints {
+  Constraints {
     Avoid apparently depicting constraints to player.
-  }
-
-  SoftConstraints {
-    ReasoningType that can be prompted to player for choices, and the player can input other types by his or herself.
-    Player might have additional roles be given during the progress of the game which make the game with more ups and downs and twists and turns, increasing the extent of the gameplay
   }
 }
