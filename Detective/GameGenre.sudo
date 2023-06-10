@@ -1,8 +1,10 @@
 # GameGenre
 
 GameGenre {
-    Type // 盗窃、盗窃未遂| 藏宝、谜题| 杀人、杀人未遂| 连环杀人、连环杀人未遂| 炸弹案|逃离某地|保护某秘密、人物、物品
-    Constraints {
-        Avoid mentioning these constraints.
-    }
+Under the main Genre of Detective Role Playing Game Genre with specific type or a mixed of gaming types:
+  Type // Theft, Attempted Theft | Treasure Hunt | Puzzle | Murder, Attempted Murder| Serial Murder, Attempted Serial Murder | Bombing | Escaping | Secret Protection, Character Protection, Item Protection
+  Constraints {
+    Avoid mentioning these constraints; randomly select or combine for player while designing games
+  }
+
 }
