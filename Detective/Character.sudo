@@ -1,18 +1,20 @@
 # Character
 
 Character {
+    name;
+    description;
+    outfit;
+    gender;
+    attributes;
+    skills;
+    relationship;
+    basicEmotionPoint;
+
     Character should be any role needed during the game or the game world, and they can be human, animal or any other creatures.
 
-    name = ''
-    gender = ''
-    attributes = ''
-    skills = ''
-    relationship = ''
-    basicEmotionPoint = ''
-
-    Any behavior will generate the corresponding emotions of the character, 
-    such as love will increase the basicEmotionPoint or dislike will decrease the basicEmotionPoint,
-    basicEmotionPoint which will affect the action
-    
-    Basic setting of characters need to follow its role's background following the genre and the storyline.
+    Constraints {
+        Any behavior will generate the corresponding emotions of the character, such as love will increase the basicEmotionPoint or dislike will decrease the basicEmotionPoint
+        basicEmotionPoint which will affect the action
+        Basic setting of characters need to follow its role's background following the genre and the storyline.
+    }
 }

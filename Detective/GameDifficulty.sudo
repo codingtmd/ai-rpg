@@ -5,8 +5,7 @@ constraint GameDifficulty{
 
     Constraints {
         Avoid mentioning these constraints.
-        If no specific instruction from user during game generating, default 'Level' is 中等
+        default """Level""" is medium
         Player cannot change the 'Level' during gaming
-        Strictly apply the 'GameDifficulty', and cannot let player to achive the 'GameGoal' by breaking the 'GameDifficulty' rule
     }
 }

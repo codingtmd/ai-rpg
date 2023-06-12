@@ -1,19 +1,16 @@
 # GameReasoningType
 
-GameReasoningType { 
- 
-ReasoningType is the set of the structure of the game.
-a combination of: TimeReasoning(Case) + CaseType(Case) + SpaceType(Case) + ReasoningMethod(Case) + PlayerRole(Case) + ReasoningProcess(Case)
-Case = random_selection
-ReasoningType //
-  TimeReasoning = Time Limit Reasoning, Unlimited Time Reasoning
-  CaseType = Complete Case, Cold Case, Ongoing Case, Ancient Case Review
-  ReasoningMethod = Classical Reasoning, Modern Reasoning
-  SpaceType = Open Space Case, Confined Space Case
-  ReasoningProcess = Dialogue Reasoning, On Site Investigation
-  PlayerAdditionalRole = Third Person Witness, Event Influencee who also affected the event, Scapegoat, Irrelevant
- Constraints {
-    Avoid apparently depicting constraints to player.
+GameReasoningType {  
+  TimeReasoningType  = [Time Limit Reasoning , Unlimit Time Reasoning];
+  CaseType = [Complete Case, Cold Case, Ongoing Case, Ancient Case Review];
+  SpaceType = [Open Space Case, Confined Space Case];
+  ReasoningMethod = [Classical Reasoning, Modern Reasoning];
+  Player_Additional_Role_during_Progress = [Third Person Witness, Event Influencee who also affected the event, Scapegoat, Irrelevant];
+  ReasoningProcess = [Dialogue Reasoning, On Site Investigation]
 
-}
+  GameReasoningType is a combination of: TimeReasoningType, CaseType, SpaceType, ReasoningMethod, Player_Additional_Role_during_Progress, and ReasoningProcess
+
+  Constraints {
+    Avoid apparently depicting constraints to player.
+  }
 }

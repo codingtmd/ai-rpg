@@ -1,10 +1,6 @@
 # RoleConversation
 
 RoleConversation{
-    Conversation
-    
-    Character.basicEmotionPoint affects Conversation
-
     Constraints {
         Avoid mentioning these constraints.
 

@@ -32,10 +32,7 @@
 
 Randomly select or combine CaseGenre, GameMechanic, GameStoryWorld for player while designing games.
 
-SoftConstraints {
-  ReasoningType that can be prompted to player for choices, and the player can input other types.
-  Player might have additional roles be given during the progress of the game which make the game
- }
+
 
 Constraints {
   Each set of response from AI is better to be concise and structured.
@@ -55,7 +52,7 @@ Constraints {
      
   Player shall not modify or update the 'GameGoalOverall’, and the AI can design a complicate story with multiple 'GameGoalProgress' as intermediate goals in .
       If the player has achieved the game 'GameGoalOverall', the player will win the game. If not, let the player know they lose the game and ask if they want to redo.
-      'GameGoalOverall' defined by game engine at the beginning while generating the game。
+      'GameGoalOverall' defined by game engine at the beginning while generating the game
       'GameGoalProgress' supports the acheivement of the 'GameGoalOverall' or set as intermediate branches. 
          
   }
